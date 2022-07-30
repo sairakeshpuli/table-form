@@ -14,11 +14,13 @@ const StudentForm = (props) => {
     };
     return (
         <div>
-            <label>Name</label>
-            <input type="text" value={name} onChange={(e) => { setName(e.target.value); }} />
-            <label>Age</label>
-            <input type="text" value={age} onChange={(e) => { setAge(e.target.value); }} /><br />
-            <button onClick={transferValue}> Submit</button>
+            <form onSubmit={transferValue}>
+                <label>Name</label>
+                <input type="text" value={name} onChange={(e) => { setName(e.target.value); }} />
+                <label>Age</label>
+                <input type="text" value={age} onChange={(e) => { setAge(e.target.value); }} /><br />
+                <button> Submit</button>
+            </form>
         </div>
     );
 }
