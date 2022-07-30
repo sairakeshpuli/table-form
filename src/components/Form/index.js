@@ -1,17 +1,7 @@
 import React, { useState } from 'react';
-
 const StudentForm = (props) => {
     const [name, setName] = useState('');
     const [age, setAge] = useState('');
-
-    const changeName = (event) => {
-        setName(event.target.value);
-    };
-
-    const changeAge = (event) => {
-        setAge(event.target.value);
-    };
-
     const transferValue = (event) => {
         event.preventDefault();
         const val = {
@@ -19,23 +9,17 @@ const StudentForm = (props) => {
             age,
         };
         props.func(val);
-        clearState();
-    };
-
-    const clearState = () => {
         setName('');
         setAge('');
     };
-
     return (
         <div>
             <label>Name</label>
-            <input type="text" value={name} onChange={changeName} />
+            <input type="text" value={name} onChange={(e) => { setName(e.target.value); }} />
             <label>Age</label>
-            <input type="text" value={age} onChange={changeAge} /><br />
+            <input type="text" value={age} onChange={(e) => { setAge(e.target.value); }} /><br />
             <button onClick={transferValue}> Submit</button>
         </div>
     );
 }
-
 export default StudentForm;

@@ -1,10 +1,15 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import StudentForm from '../Form';
 import "./index.css";
-import jsonData from '../data.json';
+
 
 const TableData = () => {
-    const [tabdata, setTabdata] = useState(jsonData);
+    const [tabdata, setTabdata] = useState([]);
+    useEffect(() => {
+        fetch('https://62da7ec69eedb699636fc58d.mockapi.io/todolist')
+            .then(response => response.json())
+            .then(json => setTabdata(json))
+    }, []);
 
     const tableRows = tabdata.map((info) => {
         return (
